@@ -1,17 +1,17 @@
 <div class="ml-2 mt-8 flex justify-center items-center">
-  <form class="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 p-8 bg-white rounded-lg shadow-lg">
+  <form class="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 p-8 bg-white rounded-lg shadow-lg" [formGroup]="formData">
     <h2 class="text-center text-pink-600 text-2xl font-semibold mb-4">Add Your Findings</h2>
     <div class="mb-4">
       <label for="name" class="block text-pink-600 font-semibold mb-2">Name</label>
-      <input id="name" type="text" placeholder="Enter your name" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400" />
+      <input id="name" type="text" placeholder="Enter your name" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400" formControlName="name"/>
     </div>
     <div class="mb-4">
       <label for="age" class="block text-pink-600 font-semibold mb-2">Age</label>
-      <input id="age" type="text" placeholder="Enter your age" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400" />
+      <input id="age" type="text" placeholder="Enter your age" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400" formControlName="age"/>
     </div>
     <div class="mb-4">
       <label for="medical_condition" class="block text-pink-600 font-semibold mb-2">Medical Condition</label>
-      <select id="medical_condition" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400">
+      <select id="medical_condition" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400" formControlName="medicalCondition">
         <option value="" disabled selected>Select Medical Condition</option>
         <option value="Diabetes">Diabetes</option>
         <option value="Asthma">Asthma</option>
@@ -23,16 +23,16 @@
     </div>
     <div class="mb-4">
       <label for="area" class="block text-pink-600 font-semibold mb-2">Area</label>
-      <select id="area" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400">
+      <select id="area" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400" formControlName="area">
         <option value="" disabled selected>Select Area</option>
-        <option value="Area 1">Area 1</option>
-        <option value="Area 2">Area 2</option>
-        <option value="Area 3">Area 3</option>
+        <option value="Area1">Area1</option>
+        <option value="Area2">Area2</option>
+        <option value="Area3">Area3</option>
       </select>
     </div>
     <div class="mb-4">
       <label for="gender" class="block text-pink-600 font-semibold mb-2">Gender</label>
-      <select id="gender" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400">
+      <select id="gender" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400" formControlName="gender">
         <option value="" disabled selected>Select Gender</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
@@ -40,10 +40,10 @@
     </div>
     <div class="mb-6">
       <label for="date" class="block text-pink-600 font-semibold mb-2">Date of Admission</label>
-      <input id="date" type="date" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400" />
+      <input id="date" type="date" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-pink-400" formControlName="date"/>
     </div>
     <div class="flex justify-center">
-      <button type="submit" class="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-pink-700">Submit</button>
+      <button class="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-pink-700" (click)="handleClick()">Submit</button>
     </div>
   </form>
 </div>

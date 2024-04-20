@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgZone } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,14 @@ import { NgZone } from '@angular/core';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  private token : string = "";
-  constructor (private http:HttpClient, private router : Router, private ngZone:NgZone,) {}
+  private token : string;
+  constructor (private http:HttpClient, private router : Router, private ngZone:NgZone, private authService : AuthService) {
+    this.token = authService.getToken()
+  }
 
   ngOnInit() {
-    if (!this.token) {
+    console.log(this.authService.getToken())
+    if (this.token == "") {
       // @ts-ignore
       window.onGoogleLibraryLoad = () => {
         console.log('Google\'s One-tap sign in script loaded!');
@@ -57,6 +61,8 @@ export class LoginComponent {
         decodedToken = JSON.parse(atob(this.token));
       } catch (e) {
         console.error('Error while trying to decode token', e);
+      } finally {
+        this.authService.setToke(this.token)
       }
       console.log('decodedToken', decodedToken);
     }
