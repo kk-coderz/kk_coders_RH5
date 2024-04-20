@@ -24,6 +24,5 @@ export const routes: Routes = [{
 },{
   path: "register",
   component : RegisterComponent,
-  canActivate : [isAuthGuard]
-}
+},{ path: '**', redirectTo: '/' }
 ];

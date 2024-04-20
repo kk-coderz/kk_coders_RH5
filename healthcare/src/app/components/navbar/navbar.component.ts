@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -13,6 +14,10 @@ import { NgIf } from '@angular/common';
 })
 export class NavbarComponent {
   constructor(private router : Router) {}
+  authService = inject(AuthService)
+  logout() {
+    this.authService.logout()
+  }
 
   isLoginPage() {
     return this.router.url === "/" || this.router.url === "/register"
