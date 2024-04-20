@@ -1,0 +1,24 @@
+<div class="ml-2 mt-8 flex justify-center items-center">
+  <form class="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 p-8 bg-white rounded-lg shadow-lg" [formGroup]="formData">
+    <h2 class="text-center text-blue-600 text-2xl font-semibold mb-4">Predict Your Condition</h2>
+    <div class="mb-4">
+      <label for="name" class="block text-blue-600 font-semibold mb-2">Name</label>
+      <input id="name" type="text" placeholder="Enter your name" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-400" formControlName="name"/>
+    </div>
+    <div class="mb-4">
+      <label for="age" class="block text-blue-600 font-semibold mb-2">Age</label>
+      <input id="age" type="text" placeholder="Enter your age" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-400" formControlName="age"/>
+    </div>
+    <div class="mb-4">
+      <label for="gender" class="block text-blue-600 font-semibold mb-2">Gender</label>
+      <select id="gender" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-400" formControlName="gender">
+        <option value="" disabled selected>Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+    <div class="flex justify-center">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700" (click)="handleClick()">Submit</button>
+    </div>
+  </form>
+</div>

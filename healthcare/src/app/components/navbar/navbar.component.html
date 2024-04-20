@@ -2,13 +2,14 @@
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center">
       <div>
-        <a href="#" class="text-pink-500 text-lg font-semibold">Logo</a>
+        <a href="#" class="text-blue-500 text-lg font-semibold">Logo</a>
       </div>
       <div class="md:flex items-center space-x-4">
-        <a *ngIf="!isLoginPage()" routerLink="/" class="text-pink-500">Dashboard</a>
-        <a *ngIf="!isLoginPage()" routerLink="/form" class="text-pink-500">Submit</a>
-        <a *ngIf="!isLoginPage()" routerLink="/logout" class="text-pink-500">Logout</a>
-        <a *ngIf="isLoginPage()" routerLink="/login" class="text-pink-500">Login</a>
+        <a *ngIf="!isLoginPage()" routerLink="/dashboard" class="text-blue-500">Dashboard</a>
+        <a *ngIf="!isLoginPage()" routerLink="/form" class="text-blue-500">Submit</a>
+        <a *ngIf="!isLoginPage()" routerLink="/predict" class="text-blue-500">Predict</a>
+        <a *ngIf="!isLoginPage()" routerLink="/logout" class="text-blue-500">Logout</a>
+        <a *ngIf="isLoginPage()" routerLink="/" class="text-blue-500">Login</a>
       </div>
     </div>
   </div>
