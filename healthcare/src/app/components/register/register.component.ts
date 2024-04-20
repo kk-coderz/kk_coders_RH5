@@ -27,8 +27,13 @@ export class RegisterComponent {
       this.formData.controls["username"].value,
       this.formData.controls["password"].value
     ).subscribe({
-      next : () => this.router.navigate(["/login"]),
-      error : (e) => this.errorMsg = e.code
+      next : () => this.router.navigate(["/"]),
+      error : (e) => {
+        this.errorMsg = e.code;
+        setTimeout(() => {
+          this.errorMsg = null;
+        }, 5000);
+      }
     })
   }
 }

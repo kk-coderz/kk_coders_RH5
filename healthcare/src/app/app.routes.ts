@@ -19,9 +19,11 @@ export const routes: Routes = [{
   canActivate : [isAuthGuard]
 },{
   path : "predict",
-  component : PredictComponent
+  component : PredictComponent,
+  canActivate : [isAuthGuard]
 },{
   path: "register",
-  component : RegisterComponent
+  component : RegisterComponent,
+  canActivate : [isAuthGuard]
 }
 ];

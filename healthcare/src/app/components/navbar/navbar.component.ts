@@ -15,6 +15,6 @@ export class NavbarComponent {
   constructor(private router : Router) {}
 
   isLoginPage() {
-    return this.router.url === "/"
+    return this.router.url === "/" || this.router.url === "/register"
   }
 }
