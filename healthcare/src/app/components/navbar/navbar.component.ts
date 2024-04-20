@@ -16,6 +16,7 @@ export class NavbarComponent {
   constructor(private router : Router) {}
   authService = inject(AuthService)
   logout() {
+    console.log("called logout")
     this.authService.logout()
   }
 
