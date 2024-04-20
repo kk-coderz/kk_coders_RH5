@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PredictComponent } from './components/predict/predict.component';
 import { RegisterComponent } from './components/register/register.component';
 import { isAuthGuard } from './services/is-auth.guard';
+import { ResourcesComponent } from './components/resources/resources.component';
 
 export const routes: Routes = [{
   path : "",
@@ -25,5 +26,8 @@ export const routes: Routes = [{
 },{
   path: "register",
   component : RegisterComponent,
+},{
+  path : "resources",
+  component : ResourcesComponent
 },{ path: '**', redirectTo: '/' }
 ];

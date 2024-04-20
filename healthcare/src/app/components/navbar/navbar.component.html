@@ -8,6 +8,7 @@
         <a *ngIf="!isLoginPage()" routerLink="/dashboard" class="text-blue-500">Dashboard</a>
         <a *ngIf="!isLoginPage()" routerLink="/form" class="text-blue-500">Submit</a>
         <a *ngIf="!isLoginPage()" routerLink="/predict" class="text-blue-500">Predict</a>
+        <a *ngIf="isLoginPage()" routerLink="/resources" class="text-blue-500">Resources</a>
         <a *ngIf="!isLoginPage()" routerLink="/" (click)="logout()" class="text-blue-500">Logout</a>
         <a *ngIf="isLoginPage()" routerLink="/" class="text-blue-500">Login</a>
         <a *ngIf="isLoginPage()" routerLink="/register" class="text-blue-500">Register</a>
