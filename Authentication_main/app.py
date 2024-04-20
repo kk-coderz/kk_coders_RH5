@@ -2,25 +2,36 @@ from flask import Flask, redirect, url_for, session
 from authlib.integrations.flask_client import OAuth
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with a real secret key
+app.secret_key = 'YOUR_SECRET_KEY_HERE'
 
-# OAuth 2 client setup
+# OAuth setup
 oauth = OAuth(app)
 google = oauth.register(
     name='google',
-    client_id='your_client_id',  # Replace with your Google client ID
-    client_secret='your_client_secret',  # Replace with your Google client secret
-    access_token_url='https://accounts.google.com/o/oauth2/token',
-    access_token_params=None,
+    client_id='638151064556-6o7bc48rmsqr6f4hhlek80ocdvfpia55.apps.googleusercontent.com',
+    client_secret='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',
     authorize_url='https://accounts.google.com/o/oauth2/auth',
     authorize_params=None,
+    access_token_url='https://oauth2.googleapis.com/token',
+    access_token_params=None,
+    refresh_token_url=None,
     api_base_url='https://www.googleapis.com/oauth2/v1/',
-    client_kwargs={'scope': 'openid profile email'},
+    client_kwargs={
+        'scope': 'openid email profile',
+        'token_endpoint_auth_method': 'client_secret_post',
+        'token_placement': 'header',
+        'jwks_uri': 'https://www.googleapis.com/oauth2/v3/certs'
+    },
+    server_metadata_url= 'https://accounts.google.com/.well-known/openid-configuration'
 )
+
 
 @app.route('/')
 def homepage():
-    return 'Welcome! <a href="/login">Login</a>'
+    user = session.get('user')
+    if user:
+        return f'Hello, {user["name"]}! <a href="/logout">Logout</a>'
+    return 'Welcome! <a href="/login">Login via Google</a>'
 
 @app.route('/login')
 def login():
@@ -30,8 +41,8 @@ def login():
 @app.route('/login/callback')
 def authorize():
     token = google.authorize_access_token()
-    user_info = google.get('userinfo').json()
-    # Do something with the user_info or use session to manage user state
+    resp = google.get('userinfo')
+    user_info = resp.json()
     session['user'] = user_info
     return redirect('/')
 
@@ -40,5 +51,5 @@ def logout():
     session.pop('user', None)
     return redirect('/')
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)
