@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import csv
 from datetime import datetime
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 # Path to the CSV file
 FILE_PATH = 'cleaned_healthcare_dataset.csv'
