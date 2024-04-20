@@ -1,15 +1,24 @@
 import { Component } from '@angular/core';
 import { NgxChartsModule }from '@swimlane/ngx-charts';  // added
+import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { Color, colorSets } from '@swimlane/ngx-charts';
+import { ScaleType } from '@swimlane/ngx-charts';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  // added
 
 @Component({
   selector: 'app-bar',
   standalone: true,
-  imports: [NgxChartsModule ],
+  imports: [NgxChartsModule, FormsModule ],
   templateUrl: './bar.component.html',
   styleUrl: './bar.component.css'
 })
 export class BarComponent {
+  areas = [
+    { id: 'Area1', name: 'Area 1' },
+    { id: 'Area2', name: 'Area 2' },
+    { id: 'Area3', name: 'Area 3' }
+  ];
+  selectedArea: string;
   chartData: any[] = [
     { name: "X", value: 1 },
     { name: "Y", value: 2 }
@@ -19,9 +28,13 @@ export class BarComponent {
 
   // Chart data
 
-  colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB']
+  colorScheme: Color = {
+    name: 'custom',
+    selectable: true,
+    group: ScaleType.Linear,
+    domain: ['#2196F3', '#1E88E5']
   };
+  schemeType = "ordinal"
 
   // Options
   gradient: boolean = false;
@@ -50,6 +63,7 @@ export class BarComponent {
     console.log(this.chartData);
     this.areaData = this.organizeDataByArea(this.rawData);
     this.chartData = this.areaData['Area1'];
+    this.selectedArea = this.areas[0].id;
     console.log(this.chartData);
   }
 
@@ -69,5 +83,11 @@ export class BarComponent {
     });
     console.log(areaData)
     return areaData;
+  }
+
+  onAreaChange(): void {
+    this.chartData = this.areaData[this.selectedArea]
+    console.log('Selected Area:', this.selectedArea);
+    // Perform actions based on the new selection
   }
 }
