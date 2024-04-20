@@ -8,7 +8,7 @@ import { isAuthGuard } from './services/is-auth.guard';
 
 export const routes: Routes = [{
   path : "",
-  component : LoginComponent
+  component : LoginComponent,
 },
 {
   path : "form",
