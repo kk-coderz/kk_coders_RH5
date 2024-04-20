@@ -2,11 +2,6 @@ import { inject, Injectable, signal } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, user } from '@angular/fire/auth';
 import { Observable, from } from 'rxjs';
 
-interface Iuser {
-  email : string,
-  username : string,
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -37,14 +32,4 @@ export class AuthService {
     return from(promise)
   }
 
-  private token : string = ""
-  constructor() { }
-
-  getToken() {
-    return this.token
-  }
-
-  setToke(token : string) {
-    this.token = token
-  }
 }

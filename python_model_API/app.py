@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
 from flask_httpauth import HTTPBasicAuth
 import pandas as pd
+from flask_cors import CORS
 
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
+CORS(app)
 
 users = {
     "admin": "secret",
