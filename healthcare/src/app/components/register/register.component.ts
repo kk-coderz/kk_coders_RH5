@@ -27,7 +27,7 @@ export class RegisterComponent {
       this.formData.controls["username"].value,
       this.formData.controls["password"].value
     ).subscribe({
-      next : () => this.router.navigate(["/dashboard"]),
+      next : () => this.router.navigate(["/login"]),
       error : (e) => this.errorMsg = e.code
     })
   }

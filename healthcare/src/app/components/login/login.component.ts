@@ -32,15 +32,13 @@ export class LoginComponent {
     ).subscribe({
       next : () => {
         this.router.navigate(["/dashboard"])
-        this.authService.user$.subscribe((user)=>{
-          if (user) {
-            this.authService.currentStatus = true
-          } else {
-            this.authService.currentStatus = false
-          }
-        })
       },
-      error : (e) => this.errorMsg = e.code
+      error : (e) => {
+        this.errorMsg = e.code;
+        setTimeout(() => {
+          this.errorMsg = null;
+        }, 5000);
+      }
     })
   }
 }

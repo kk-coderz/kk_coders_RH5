@@ -15,7 +15,8 @@ export class PredictComponent {
   formData : FormGroup = new FormGroup({
     name : new FormControl(""),
     age : new FormControl(""),
-    gender : new FormControl("")
+    gender : new FormControl(""),
+    area : new FormControl("")
   })
 
    handleClick() {
