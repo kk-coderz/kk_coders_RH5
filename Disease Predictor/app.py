@@ -1,8 +1,11 @@
 from flask import Flask, request, jsonify
 import pandas as pd
 import joblib
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app, resources={r"/predict": {"origins": "http://localhost:4200"}})
 
 # Load model and label encoders
 print("Started")
