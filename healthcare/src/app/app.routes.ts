@@ -12,7 +12,8 @@ export const routes: Routes = [{
 },
 {
   path : "form",
-  component : FormComponent
+  component : FormComponent,
+  canActivate : [isAuthGuard]
 },{
   path : "dashboard",
   component : DashboardComponent,
