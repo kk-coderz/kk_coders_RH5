@@ -1,4 +1,23 @@
-<div class = "bg-blue-400 min-h-screen max-h-max">
+<div class = "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 min-h-screen max-h-max animated-gradient">
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
 </div>
+
+<style>
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  .animated-gradient {
+    background: linear-gradient(45deg, blue-500, blue-600);
+    background-size: 400% 400%;
+    animation: gradientAnimation 20s ease infinite;
+  }
+</style>
