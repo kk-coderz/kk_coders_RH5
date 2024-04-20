@@ -2,7 +2,8 @@
 import { CredentialResponse } from 'google-one-tap';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { NgZone } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
@@ -16,13 +17,13 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
   private token : string;
-  constructor (private http:HttpClient, private router : Router, private ngZone:NgZone, private authService : AuthService) {
+  constructor (@Inject(PLATFORM_ID) private platformId : Object,private http:HttpClient, private router : Router, private ngZone:NgZone, private authService : AuthService) {
     this.token = authService.getToken()
   }
 
   ngOnInit() {
     console.log(this.authService.getToken())
-    if (this.token == "") {
+    if (this.token == "" && isPlatformBrowser(this.platformId)) {
       // @ts-ignore
       window.onGoogleLibraryLoad = () => {
         console.log('Google\'s One-tap sign in script loaded!');
