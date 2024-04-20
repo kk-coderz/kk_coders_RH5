@@ -3,6 +3,7 @@ import { FormComponent } from './components/form/form.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { PredictComponent } from './components/predict/predict.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [{
   path : "",
@@ -17,5 +18,8 @@ export const routes: Routes = [{
 },{
   path : "predict",
   component : PredictComponent
+},{
+  path: "register",
+  component : RegisterComponent
 }
 ];

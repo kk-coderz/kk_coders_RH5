@@ -1,24 +1,41 @@
-<div class="ml-2 mt-8 flex justify-center items-center">
-  <form class="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 p-8 bg-white rounded-lg shadow-lg" [formGroup]="formData">
-    <h2 class="text-center text-blue-600 text-2xl font-semibold mb-4">Predict Your Condition</h2>
-    <div class="mb-4">
-      <label for="name" class="block text-blue-600 font-semibold mb-2">Name</label>
-      <input id="name" type="text" placeholder="Enter your name" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-400" formControlName="name"/>
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <form class="max-w-lg w-full space-y-8" [formGroup]="formData">
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-white" style="letter-spacing: 3px;">
+        Predict Your Condition
+      </h2>
     </div>
-    <div class="mb-4">
-      <label for="age" class="block text-blue-600 font-semibold mb-2">Age</label>
-      <input id="age" type="text" placeholder="Enter your age" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-400" formControlName="age"/>
+    <div class="rounded-lg shadow-sm -space-y-px">
+      <div>
+        <label for="name" class="sr-only">Name</label>
+        <input id="name" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Name" formControlName="name"/>
+      </div>
+      <div>
+        <label for="age" class="sr-only">Age</label>
+        <input id="age" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Age" formControlName="age"/>
+      </div>
+      <div>
+        <label for="gender" class="sr-only">Gender</label>
+        <select id="gender" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" formControlName="gender">
+          <option value="" disabled selected>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div>
+        <label for="area" class="sr-only">Area</label>
+        <select id="area" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" formControlName="area">
+          <option value="" disabled selected>Select Area</option>
+          <option value="Area1">Area1</option>
+          <option value="Area2">Area2</option>
+          <option value="Area3">Area3</option>
+        </select>
+      </div>
     </div>
-    <div class="mb-4">
-      <label for="gender" class="block text-blue-600 font-semibold mb-2">Gender</label>
-      <select id="gender" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-400" formControlName="gender">
-        <option value="" disabled selected>Select Gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-    </div>
-    <div class="flex justify-center">
-      <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700" (click)="handleClick()">Submit</button>
+    <div>
+      <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" (click)="handleClick()">
+        Predict
+      </button>
     </div>
   </form>
 </div>

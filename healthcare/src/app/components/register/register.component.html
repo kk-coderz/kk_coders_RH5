@@ -1,0 +1,21 @@
+<div class="ml-2 mt-8 flex justify-center items-center">
+  <form class="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 p-8 bg-white rounded-lg shadow-lg" [formGroup]="formData">
+    <h2 class="text-center text-blue-600 text-2xl font-semibold mb-4">Register</h2>
+    <div class="mb-4">
+      <label for="username" class="block text-blue-600 font-semibold mb-2">Username</label>
+      <input id="username" type="text" placeholder="Enter your username" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-400" formControlName="username"/>
+    </div>
+    <div class="mb-4">
+      <label for="email" class="block text-blue-600 font-semibold mb-2">Email</label>
+      <input id="email" type="email" placeholder="Enter your email" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-400" formControlName="email"/>
+    </div>
+    <div class="mb-4">
+      <label for="password" class="block text-blue-600 font-semibold mb-2">Password</label>
+      <input id="password" type="password" placeholder="Enter your password" class="px-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-400" formControlName="password"/>
+    </div>
+    <div class="flex justify-center">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700" (click)="handleClick()">Submit</button>
+    </div>
+    <p [textContent]="errorMsg?.substring(5,errorMsg?.length)" class="text-red-500"></p>
+  </form>
+</div>
