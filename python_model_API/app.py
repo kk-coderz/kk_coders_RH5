@@ -1,22 +1,20 @@
 from flask import Flask, request, jsonify
 from flask_httpauth import HTTPBasicAuth
 import pandas as pd
-from flask_cors import CORS
 
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
-CORS(app, resources={r"/past": {"origins": "http://localhost:4200"}})
-CORS(app, resources={r"/stats": {"origins": "http://localhost:4200"}})
 
 users = {
     "admin": "secret",
     "user": "pass"
 }
 
-df = pd.read_csv('area_forecasts.csv')
-df_transposed = df.set_index('Area').T
-json_output = df_transposed.to_json()
+df = pd.read_csv('area_forecasts.csv', index_col=0)
+json_output = df.to_json(orient='index', indent=4)
+
+
 
 @auth.verify_password
 def verify_password(username, password):
@@ -57,6 +55,8 @@ max_date = pivot_data.index.max()
 latest_data = pivot_data.loc[pivot_data.index == max_date]
 area_grouped = latest_data.groupby('Area').sum()
 json_output2 = area_grouped.to_json(orient='index')
+
+
 
 @app.route('/past', methods=['GET'])
 @auth.login_required
