@@ -44,7 +44,7 @@ export class LoginComponent {
         }
       })
     }else {
-      this.errorMsg = "not-filled";
+      this.errorMsg = "invalid-inputs";
       setTimeout(() => {
         this.errorMsg = null;
       }, 5000);
