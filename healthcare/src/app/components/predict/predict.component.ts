@@ -5,6 +5,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { predictionInterface } from '../../services/api.service';
 import { routerAnimationState } from '../../animations/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-predict',
@@ -27,7 +28,7 @@ export class PredictComponent {
     Cancer: 0,
   };
 
-  constructor (private http:HttpClient) {}
+  constructor (private http:HttpClient, private router : Router) {}
   apiService = inject(ApiService)
 
   formData : FormGroup = new FormGroup({
@@ -36,6 +37,10 @@ export class PredictComponent {
     gender : new FormControl(""),
     area : new FormControl("")
   })
+
+  sendToResource() {
+    this.router.navigate(['/resources']);
+  }
 
   handleClick() {
     let name : string = this.formData.controls["name"].value
