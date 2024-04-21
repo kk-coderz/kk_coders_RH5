@@ -5,7 +5,7 @@ import pandas as pd
 
 
 app = Flask(__name__)
-CORS(app, resources={r"/last": {"origins": "*"}})
+CORS(app, resources={r"/past": {"origins": "*"}})
 CORS(app, resources={r"/stats": {"origins": "*"}})
 auth = HTTPBasicAuth()
 
