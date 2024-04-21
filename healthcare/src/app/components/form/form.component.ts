@@ -31,9 +31,9 @@ export class FormComponent {
       name : this.formData.controls["name"].value,
       age : this.formData.controls["age"].value,
       gender : this.formData.controls["gender"].value,
-      dateOfAdmission : this.formData.controls["name"].value,
-      medicalCondition : this.formData.controls["name"].value,
-      area : this.formData.controls["name"].value
+      dateOfAdmission : this.formData.controls["date"].value,
+      medicalCondition : this.formData.controls["medicalCondition"].value,
+      area : this.formData.controls["area"].value
     }
 
     this.apiService.sendData(data)
