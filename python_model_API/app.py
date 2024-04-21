@@ -5,7 +5,7 @@ import pandas as pd
 
 
 app = Flask(__name__)
-CORS(app, resources={r"/last": {"origins": "*"}})
+CORS(app, resources={r"/past": {"origins": "*"}})
 CORS(app, resources={r"/stats": {"origins": "*"}})
 auth = HTTPBasicAuth()
 
@@ -31,7 +31,7 @@ def verify_password(username, password):
 def stats():
     return json_output
 
-data = pd.read_csv('../cleaned_healthcare_dataset.csv')
+data = pd.read_csv('./cleaned_healthcare_dataset.csv')
 data['Date of Admission'] = pd.to_datetime(data['Date of Admission'])
 
 # Filter data for the latest month
@@ -55,4 +55,4 @@ def past():
     
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000)

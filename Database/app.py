@@ -22,29 +22,11 @@ def append_data(new_data):
 
         writer.writerow(new_data)
 
-#Write the valid data function
-def valid_data(new_entry):
-    #check if all values are present
-    if not all(new_entry.values()):
-        return False
-    #check if age is between 0 and 100
-    if not 0 <= new_entry['Age'] <= 100 and new_entry['Age'].isdigit():
-        return False
-    #Area is not in areas
-    areas = ["Area1", "Area2", "Area3"]
-    if new_entry['Area'] not in areas:
-        return False
-    #Condition is not in conditions
-    conditions = ['Diabetes', 'Asthma', 'Obesity', 'Arthritis', 'Hypertension','Cancer']
-    if new_entry["Medical Condition"] not in conditions:
-        return False
-
-    return True
-
 @app.route('/data', methods=['POST'])
 def data():
     try:
         content = request.json
+        print(6)
         new_entry = {
             'Name': content['Name'],
             'Age': content['Age'],
@@ -53,10 +35,7 @@ def data():
             'Medical Condition': content['Medical Condition'],
             'Area': content['Area']
         }
-        if valid_data(new_entry):
-            append_data(new_entry)
-        else:
-            raise ValueError("Invalid data")
+        append_data(new_entry)
         return jsonify({"success": True, "message": "Data appended successfully"}), 200
     except Exception as e:
         return jsonify({"success": False, "message": str(e)}), 500

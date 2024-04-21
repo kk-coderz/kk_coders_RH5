@@ -23,8 +23,8 @@ export class LoginComponent {
   authService = inject(AuthService)
   constructor (/*@Inject(PLATFORM_ID) private platformId : Object,*/private http:HttpClient, private router : Router, private ngZone:NgZone) {}
   formData : FormGroup = new FormGroup({
-    email : new FormControl("",[Validators.required]),
-    password : new FormControl("",[Validators.email,Validators.required])
+    email : new FormControl("",[Validators.email,Validators.required]),
+    password : new FormControl("",[Validators.required])
   })
 
   handleClick() {
@@ -43,6 +43,11 @@ export class LoginComponent {
           }, 5000);
         }
       })
+    }else {
+      this.errorMsg = "not-filled";
+      setTimeout(() => {
+        this.errorMsg = null;
+      }, 5000);
     }
   }
 }

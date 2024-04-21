@@ -17,6 +17,7 @@ export class FormComponent {
   @HostBinding("@routeAnimationTrigger") routeAnimation = true
   constructor(private http : HttpClient, private formBuilder: FormBuilder) {}
   apiService = inject(ApiService)
+  errorMsg : string  | null = "";
 
   formData : FormGroup = this.formBuilder.group({
     name: ["", [Validators.required]],
@@ -39,7 +40,10 @@ export class FormComponent {
       }
       this.apiService.sendData(data)
     } else {
-      console.log("invalid")
+      this.errorMsg = "invalid-inputs";
+      setTimeout(() => {
+        this.errorMsg = null;
+      }, 5000);
     }
   }
 }
