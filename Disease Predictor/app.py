@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 
 app = Flask(__name__)
-CORS(app, resources={r"/predict": {"origins": "http://localhost:4200"}})
+CORS(app, resources={r"/predict": {"origins": "*"}})
 
 # Load model and label encoders
 print("Started")

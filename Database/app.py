@@ -5,7 +5,7 @@ from datetime import datetime
 import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/data": {"origins": "*"}})
 
 # Path to the CSV file
 FILE_PATH = 'cleaned_healthcare_dataset.csv'
