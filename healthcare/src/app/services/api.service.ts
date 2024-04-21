@@ -55,4 +55,12 @@ export class ApiService {
       })
     })
   }
+
+  getPast() {
+    return this.http.get("http://127.0.0.1:5000/past" , {
+      headers : new HttpHeaders({
+        "Authorization" : "Basic " + btoa("admin:secret")
+      })
+    })
+  }
 }

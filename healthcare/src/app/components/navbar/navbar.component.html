@@ -2,16 +2,16 @@
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center">
       <div>
-        <a href="#" class="text-blue-500 text-lg font-semibold">Logo</a>
+        <a href="#" class="text-blue-700 font-bold text-lg font-semibold font-mono">Kommunity Health</a>
       </div>
       <div class="md:flex items-center space-x-4">
-        <a *ngIf="!isLoginPage()" routerLink="/dashboard" class="text-blue-500">Dashboard</a>
-        <a *ngIf="!isLoginPage()" routerLink="/form" class="text-blue-500">Submit</a>
-        <a *ngIf="!isLoginPage()" routerLink="/predict" class="text-blue-500">Predict</a>
-        <a routerLink="/resources" class="text-blue-500">Resources</a>
-        <a *ngIf="!isLoginPage()" routerLink="/" (click)="logout()" class="text-blue-500">Logout</a>
-        <a *ngIf="isLoginPage()" routerLink="/" class="text-blue-500">Login</a>
-        <a *ngIf="isLoginPage()" routerLink="/register" class="text-blue-500">Register</a>
+        <a *ngIf="!isLoginPage()" routerLink="/dashboard" class="text-blue-700 font-bold">Dashboard</a>
+        <a *ngIf="!isLoginPage()" routerLink="/form" class="text-blue-700 font-bold">Submit</a>
+        <a *ngIf="!isLoginPage()" routerLink="/predict" class="text-blue-700 font-bold">Predict</a>
+        <a routerLink="/resources" class="text-blue-700 font-bold">Resources</a>
+        <a *ngIf="!isLoginPage()" routerLink="/" (click)="logout()" class="text-blue-700 font-bold">Logout</a>
+        <a *ngIf="isLoginPage()" routerLink="/" class="text-blue-700 font-bold">Login</a>
+        <a *ngIf="isLoginPage()" routerLink="/register" class="text-blue-700 font-bold">Register</a>
       </div>
     </div>
   </div>
