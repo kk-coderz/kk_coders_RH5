@@ -31,7 +31,7 @@ def verify_password(username, password):
 def stats():
     return json_output
 
-data = pd.read_csv('./cleaned_healthcare_dataset.csv')
+data = pd.read_csv('../cleaned_healthcare_dataset.csv')
 data['Date of Admission'] = pd.to_datetime(data['Date of Admission'])
 
 # Filter data for the latest month
