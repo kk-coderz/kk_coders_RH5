@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface DataInterface {
   name : string,
@@ -21,10 +22,10 @@ export interface predictionInterface {
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private router : Router) { }
 
   sendData(body : DataInterface) {
-    this.http.post("http://127.0.0.1:5000/data",{
+    this.http.post("http://127.0.0.1:4000/data",{
         "Name" : body.name,
         "Age" : body.age,
         "Gender" : body.gender,
@@ -32,10 +33,10 @@ export class ApiService {
         "Medical Condition" : body.medicalCondition,
         "Area" : body.area
     },
-  )}
+  ).subscribe({next:()=>{this.router.navigate(["/dashboard"])}})}
 
   predictionData(body : predictionInterface) {
-    return this.http.post("http://127.0.0.1:5000/predict",{
+    return this.http.post("http://127.0.0.1:3000/predict",{
       "Name" : body.name,
       "Age" : body.age,
       "Gender" : body.gender,

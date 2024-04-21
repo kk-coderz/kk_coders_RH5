@@ -1,5 +1,5 @@
 <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-  <form class="max-w-lg w-full space-y-8" [formGroup]="formData">
+  <form *ngIf = "!gotData" class="max-w-lg w-full space-y-8" [formGroup]="formData">
     <div>
       <h2 class="mt-6 text-center text-3xl font-extrabold text-white" style="letter-spacing: 3px;">
         Predict Your Condition
@@ -38,4 +38,54 @@
       </button>
     </div>
   </form>
+
+  <div *ngIf = "gotData" class="content-wrapper">
+    <h1 class="mt-6 text-center text-3xl font-extrabold text-white">Estimated Prediction of Possible Disease</h1>
+    <br>
+
+    <div class="flex flex-wrap justify-center">
+
+        <!-- Diabetes Card -->
+        <div class="flex-none mx-2 mb-4 bg-white rounded-lg overflow-hidden shadow-md w-1/6 p-4">
+            <button (click)="sendToResource()"><h2 class="text-blue-700 font-bold text-xl mb-2 hover:text-blue-500 transition-colors">Diabetes</h2></button>
+            <p class="text-gray-700"><b>Percentage:</b> {{ predictionData.Diabetes | number:'1.2-2' }}%</p>
+        </div>
+
+        <!-- Asthma Card -->
+        <div class="flex-none mx-2 mb-4 bg-white rounded-lg overflow-hidden shadow-md w-1/6 p-4">
+          <button (click)="sendToResource()"><h2 class="text-blue-700 font-bold text-xl mb-2 hover:text-blue-500 transition-colors">Asthma</h2></button>
+            <p class="text-gray-700"><b>Percentage:</b> {{ predictionData.Asthma | number:'1.2-2' }}%</p>
+        </div>
+
+        <!-- Obesity Card -->
+        <div class="flex-none mx-2 mb-4 bg-white rounded-lg overflow-hidden shadow-md w-1/6 p-4">
+          <button (click)="sendToResource()"><h2 class="text-blue-700 font-bold text-xl mb-2 hover:text-blue-500 transition-colors">Obesity</h2></button>
+            <p class="text-gray-700"><b>Percentage:</b> {{ predictionData.Obesity | number:'1.2-2' }}%</p>
+        </div>
+
+        <!-- Arthritis Card -->
+        <div class="flex-none mx-2 mb-4 bg-white rounded-lg overflow-hidden shadow-md w-1/6 p-4">
+          <button (click)="sendToResource()"><h2 class="text-blue-700 font-bold text-xl mb-2 hover:text-blue-500 transition-colors">Arthritis</h2></button>
+            <p class="text-gray-700"><b>Percentage:</b> {{ predictionData.Arthritis | number:'1.2-2' }}%</p>
+        </div>
+
+        <!-- Hypertension Card -->
+        <div class="flex-none mx-2 mb-4 bg-white rounded-lg overflow-hidden shadow-md w-1/6 p-4">
+          <button (click)="sendToResource()"><h2 class="text-blue-700 font-bold text-xl mb-2 hover:text-blue-500 transition-colors">Hypertension</h2></button>
+            <p class="text-gray-700"><b>Percentage:</b> {{ predictionData.Hypertension | number:'1.2-2' }}%</p>
+        </div>
+
+        <!-- Cancer Card -->
+        <div class="flex-none mx-2 mb-4 bg-white rounded-lg overflow-hidden shadow-md w-1/6 p-4">
+          <button (click)="sendToResource()"><h2 class="text-blue-700 font-bold text-xl mb-2 hover:text-blue-500 transition-colors">Cancer</h2></button>
+            <p class="text-gray-700"><b>Percentage:</b> {{ predictionData.Cancer | number:'1.2-2' }}%</p>
+        </div>
+
+    </div>
+
+    <!-- Disclaimer -->
+    <p class="text-white max-w-5xl mb-4 p-4 mx-auto"><b>Disclaimer:</b> This information is intended for general knowledge only and should not be a substitute for professional medical advice. Always consult your doctor for diagnosis and treatment.</p>
+  </div>
+
+
 </div>

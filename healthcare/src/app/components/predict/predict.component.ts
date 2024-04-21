@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
+import { NgIf, CommonModule  } from '@angular/common';
 import { Component, inject, HostBinding } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { predictionInterface } from '../../services/api.service';
 import { routerAnimationState } from '../../animations/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-predict',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf, CommonModule ],
   templateUrl: './predict.component.html',
   styleUrl: './predict.component.css',
   animations : [routerAnimationState]
@@ -16,7 +18,17 @@ import { routerAnimationState } from '../../animations/animations';
 export class PredictComponent {
   @HostBinding("@routeAnimationTrigger") routeAnimation = true
 
-  constructor (private http:HttpClient) {}
+  gotData : boolean = false;
+  predictionData = {
+    Diabetes: 0 ,
+    Asthma: 0,
+    Obesity: 0,
+    Arthritis: 0,
+    Hypertension: 0,
+    Cancer: 0,
+  };
+
+  constructor (private http:HttpClient, private router : Router) {}
   apiService = inject(ApiService)
 
   formData : FormGroup = new FormGroup({
@@ -25,6 +37,10 @@ export class PredictComponent {
     gender : new FormControl(""),
     area : new FormControl("")
   })
+
+  sendToResource() {
+    this.router.navigate(['/resources']);
+  }
 
   handleClick() {
     let name : string = this.formData.controls["name"].value
@@ -38,6 +54,10 @@ export class PredictComponent {
       gender : gender,
       area : area
     })
-    req.subscribe()
+    req.subscribe((data: any) => {
+      this.predictionData = data;
+      console.log(this.predictionData);
+    });
+    this.gotData = true;
   }
 }
