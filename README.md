@@ -16,6 +16,6 @@ npm install
 ### Prerequisites
 scikit-learn==1.2.2
 
-##Instruction
+## Instruction
 1. To run Locally: Run the app.py files in Databse, Disease Predictor and python_model_API and ng serve in the healthcare folder
 2. To run Vitually: Run the app.py files in Databse, Disease Predictor and the following fronend: https://healthcare-web-app-front-end.vercel.app/
