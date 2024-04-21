@@ -1,0 +1,50 @@
+<p>pie works!</p>
+<div class="flex items-center">
+    <label class="sr-only" for="dropdown">Choose an option:</label>
+    <span
+        class="w-1/6 px-3 py-2 bg-white border text-gray-900 rounded-bl-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">Choose
+        an option:</span>
+    <select
+        class="appearance-none rounded-none relative block w-1/6 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+        id="dropdown" [(ngModel)]="selectedArea" (change)="onAreaChange()" title="You have selected ">
+        <option *ngFor="let area of areas" [value]="area.id">
+            {{ area.name }}
+        </option>
+    </select>
+</div>
+<div>
+    <div>
+        <div>
+            <ngx-charts-pie-chart [view]="[1000,400]" [scheme]="colorScheme" [results]="chartData['Diabetes']"
+                [legend]="true" [legendTitle]="'Legend'">
+            </ngx-charts-pie-chart>
+        </div>
+        <div>
+            <ngx-charts-pie-chart [view]="[1000,400]" [scheme]="colorScheme" [results]="chartData['Heart Disease']"
+                [legend]="true" [legendTitle]="'Legend'">
+            </ngx-charts-pie-chart>
+        </div>
+        <div>
+            <ngx-charts-pie-chart [view]="[1000,400]" [scheme]="colorScheme" [results]="chartData['Cancer']"
+                [legend]="true" [legendTitle]="'Legend'">
+            </ngx-charts-pie-chart>
+        </div>
+    </div>
+    <div>
+        <div>
+            <ngx-charts-pie-chart [view]="[1000,400]" [scheme]="colorScheme" [results]="chartData['Alzheimers Disease']"
+                [legend]="true" [legendTitle]="'Legend'">
+            </ngx-charts-pie-chart>
+        </div>
+        <div>
+            <ngx-charts-pie-chart [view]="[1000,400]" [scheme]="colorScheme" [results]="chartData['Stroke']"
+                [legend]="true" [legendTitle]="'Legend'">
+            </ngx-charts-pie-chart>
+        </div>
+        <div>
+            <ngx-charts-pie-chart [view]="[1000,400]" [scheme]="colorScheme"
+                [results]="chartData['Respiratory Diseases']" [legend]="true" [legendTitle]="'Legend'">
+            </ngx-charts-pie-chart>
+        </div>
+    </div>
+</div>
