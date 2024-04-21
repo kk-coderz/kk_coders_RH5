@@ -1,15 +1,19 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostBinding, inject } from '@angular/core';
 import { FormGroup,FormControl,ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { routerAnimationState } from '../../animations/animations';
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
+  animations : [routerAnimationState]
 })
 export class RegisterComponent {
+  @HostBinding("@routeAnimationTrigger") routeAnimation = true
+
   constructor(private router : Router) {}
   authService = inject(AuthService)
   errorMsg : string | null = ""

@@ -1,17 +1,21 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, HostBinding } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { predictionInterface } from '../../services/api.service';
+import { routerAnimationState } from '../../animations/animations';
 
 @Component({
   selector: 'app-predict',
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './predict.component.html',
-  styleUrl: './predict.component.css'
+  styleUrl: './predict.component.css',
+  animations : [routerAnimationState]
 })
 export class PredictComponent {
+  @HostBinding("@routeAnimationTrigger") routeAnimation = true
+
   constructor (private http:HttpClient) {}
   apiService = inject(ApiService)
 
