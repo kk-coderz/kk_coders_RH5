@@ -11,9 +11,9 @@ users = {
     "user": "pass"
 }
 
-df = pd.read_csv('area_forecasts.csv')
-df_transposed = df.set_index('Area').T
-json_output = df_transposed.to_json(orient='index')
+df = pd.read_csv('area_forecasts.csv', index_col=0)
+json_output = df.to_json(orient='index', indent=4)
+
 
 
 @auth.verify_password
