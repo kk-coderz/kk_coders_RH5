@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { routerAnimationState } from '../../animations/animations';
+import { ApiService, DataInterface } from '../../services/api.service';
 
 @Component({
   selector: 'app-form',
@@ -14,6 +15,7 @@ import { routerAnimationState } from '../../animations/animations';
 export class FormComponent {
   @HostBinding("@routeAnimationTrigger") routeAnimation = true
   constructor(private http : HttpClient) {}
+  apiService = inject(ApiService)
 
   formData : FormGroup = new FormGroup({
     name : new FormControl(""),
@@ -25,18 +27,16 @@ export class FormComponent {
   })
 
   handleClick() {
-    let req = this.http.post("http://127.0.0.1:5000/data",{
-      "Name": this.formData.controls["name"].value,
-      "Age": this.formData.controls["age"].value,
-      "Gender": this.formData.controls["gender"].value,
-      "Date of Admission": this.formData.controls["name"].value,
-      "Medical Condition": this.formData.controls["name"].value,
-      "Area": this.formData.controls["name"].value
-  })
-    req.subscribe((x)=>{
-      console.log(x)
-    })
-  }
+    let data : DataInterface = {
+      name : this.formData.controls["name"].value,
+      age : this.formData.controls["age"].value,
+      gender : this.formData.controls["gender"].value,
+      dateOfAdmission : this.formData.controls["name"].value,
+      medicalCondition : this.formData.controls["name"].value,
+      area : this.formData.controls["name"].value
+    }
 
+    this.apiService.sendData(data)
+  }
 }
 
