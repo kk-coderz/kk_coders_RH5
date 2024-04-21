@@ -5,7 +5,7 @@ import { Component, HostBinding, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgZone } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { routerAnimationState } from '../../animations/animations';
 
 @Component({
@@ -23,24 +23,26 @@ export class LoginComponent {
   authService = inject(AuthService)
   constructor (/*@Inject(PLATFORM_ID) private platformId : Object,*/private http:HttpClient, private router : Router, private ngZone:NgZone) {}
   formData : FormGroup = new FormGroup({
-    email : new FormControl(""),
-    password : new FormControl("")
+    email : new FormControl("",[Validators.required]),
+    password : new FormControl("",[Validators.email,Validators.required])
   })
 
   handleClick() {
-    this.authService.login(
-      this.formData.controls["email"].value,
-      this.formData.controls["password"].value
-    ).subscribe({
-      next : () => {
-        this.router.navigate(["/dashboard"])
-      },
-      error : (e) => {
-        this.errorMsg = e.code;
-        setTimeout(() => {
-          this.errorMsg = null;
-        }, 5000);
-      }
-    })
+    if (this.formData.valid) {
+      this.authService.login(
+        this.formData.controls["email"].value,
+        this.formData.controls["password"].value
+      ).subscribe({
+        next : () => {
+          this.router.navigate(["/dashboard"])
+        },
+        error : (e) => {
+          this.errorMsg = e.code;
+          setTimeout(() => {
+            this.errorMsg = null;
+          }, 5000);
+        }
+      })
+    }
   }
 }
