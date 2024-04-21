@@ -46,4 +46,4 @@ def predict_medical_condition(age, gender_encoded, area_encoded):
     return {label: prob * 100 for label, prob in zip(class_labels, predicted_prob[0])}
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=3000)

@@ -1,10 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_httpauth import HTTPBasicAuth
 import pandas as pd
+from flask_cors import CORS
 
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
+CORS(app, resources={r"/stats": {"origins": "http://localhost:4200"}})
+CORS(app, resources={r"/past": {"origins": "http://localhost:4200"}})
 
 users = {
     "admin": "secret",
@@ -66,4 +69,4 @@ def past():
     
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000)

@@ -24,7 +24,7 @@ export class ApiService {
   constructor(private http : HttpClient) { }
 
   sendData(body : DataInterface) {
-    this.http.post("http://127.0.0.1:5000/data",{
+    this.http.post("http://127.0.0.1:4000/data",{
         "Name" : body.name,
         "Age" : body.age,
         "Gender" : body.gender,
@@ -35,7 +35,7 @@ export class ApiService {
   )}
 
   predictionData(body : predictionInterface) {
-    return this.http.post("http://127.0.0.1:5000/predict",{
+    return this.http.post("http://127.0.0.1:3000/predict",{
       "Name" : body.name,
       "Age" : body.age,
       "Gender" : body.gender,
